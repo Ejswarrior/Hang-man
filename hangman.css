@@ -1,0 +1,13 @@
+.container{
+   background-color: antiquewhite;
+   
+}
+.text{
+  text-align: center;  
+    
+}
+.buttons{
+    
+    align-items: center;
+    justify-content: center;
+}
