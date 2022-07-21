@@ -11,15 +11,34 @@ let strings = Math.random().toString(36).substring(2,12)
 let guess = stringArray[Math.floor(Math.random()*stringArray.length)].split('')
 console.log(guess)
 let turnOfHang = 0;
+let tries = 6
+let guessArr = []
 
 function buttonHang(letter, buttonName){
-document.querySelector('.'+ buttonName).addEventListener('click', function(){
+document.querySelector('.' + buttonName).addEventListener('click', function(){
 
 if(letter == guess[turnOfHang]){
 document.querySelector('.guesses').textContent += letter;
+turnOfHang +=1;
+guessArr.push(guess[turnOfHang - 1])
+console.log(guessArr)
+ } 
+else if(letter != guess[turnOfHang]){
+    tries -= 1;
+    console.log(tries)
+    } 
+
+ if(guessArr.join('') === guess.join('')){
+
+document.querySelector('.congrats').textContent += 'You win';
+} 
+
+else if(tries == 0){
+
+    document.querySelector('.congrats').textContent += 'lose'
 }
 
-turnOfHang +=1;
+
 })
 }
 
@@ -37,7 +56,7 @@ buttonHang('k','k')
 buttonHang('l','l')
 buttonHang('m','m')
 buttonHang('n','n')
-buttonHang('o', 'o')
+buttonHang('o','o')
 buttonHang('p','p')
 buttonHang('q','q')
 buttonHang('r','r')
