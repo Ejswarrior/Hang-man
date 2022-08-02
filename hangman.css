@@ -1,5 +1,7 @@
 .container{
-   background-color: antiquewhite;
+   background-color: rgb(34, 53, 38);
+   text-align: center;
+   color:white
    
 }
 .text{
@@ -10,4 +12,21 @@
     
     align-items: center;
     justify-content: center;
+}
+.dashes{
+  font-size: 50px;
+  text-align: center;
+}
+
+.buttons > button{
+  background-color: rgb(71, 25, 22);
+  color: white;
+  
+  
+}
+h1, h2, h3{
+  text-shadow: 5px 5px black;
+}
+.buttons > button:hover{
+  box-shadow: 2px 2px black;
 }

@@ -6,35 +6,56 @@
 5. Increment the varaibles so that they are all on the correct "turn"
 6. create a turns varaible to display how many turns they have before they lose 
 */
+
+//array for the hangman words and the we take a random word and split it for comparing the guesses
 let stringArray = ['hello', 'cat', 'neighboor', 'house', 'Baseball', 'football', 'soccer', 'plane', 'jogging', 'gaming']
-let strings = Math.random().toString(36).substring(2,12)
 let guess = stringArray[Math.floor(Math.random()*stringArray.length)].split('')
+
 console.log(guess)
 let turnOfHang = 0;
 let tries = 6
 let guessArr = []
+let dashArr = []
+dashTurn = 0;
 
+// dashes being created for the quesses
+for(let i = 0;i<guess.length; i++){
+    dashArr.push('-')
+    document.querySelector('.dashes').textContent = dashArr.join('');
+    
+} 
+
+
+//created a function so we dont have to write 24 event listeners
 function buttonHang(letter, buttonName){
 document.querySelector('.' + buttonName).addEventListener('click', function(){
 
 if(letter == guess[turnOfHang]){
-document.querySelector('.guesses').textContent += letter;
+//Incrementing the turn for the letters and the turn for the dashes
 turnOfHang +=1;
+dashTurn += 1;
+//Created this so we can replace out - array one by one with each click
+dashArr.splice(dashTurn - 1, 1, guess[turnOfHang - 1].toUpperCase())
+
+document.querySelector('.dashes').textContent = dashArr.join('');
 guessArr.push(guess[turnOfHang - 1])
 console.log(guessArr)
  } 
 else if(letter != guess[turnOfHang]){
+    //When guessing wrong we decrease tries by 1 
     tries -= 1;
     console.log(tries)
+    document.querySelector('.guesses').textContent = 'tries:' + Tries
     } 
 
  if(guessArr.join('') === guess.join('')){
 
+// joins both arrays and see if they are the same(you win if so)
 document.querySelector('.congrats').textContent += 'You win';
 } 
 
 else if(tries == 0){
-
+// if we go to zero we lose tries
     document.querySelector('.congrats').textContent += 'lose'
 }
 
