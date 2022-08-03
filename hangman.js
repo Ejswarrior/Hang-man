@@ -8,7 +8,8 @@
 */
 
 //array for the hangman words and the we take a random word and split it for comparing the guesses
-let stringArray = ['hello', 'cat', 'neighboor', 'house', 'Baseball', 'football', 'soccer', 'plane', 'jogging', 'gaming']
+let stringArray = ['hello', 'cat', 'neighboor', 'house', 'Baseball', 'football', 'soccer', 'plane', 'jogging', 'gaming', 'computer', 'phone', 'car', 'gym', 'coordinates',
+'fishing', 'lake', 'roof', 'highlord', 'country', 'russia']
 let guess = stringArray[Math.floor(Math.random()*stringArray.length)].split('')
 
 console.log(guess)
@@ -41,22 +42,24 @@ document.querySelector('.dashes').textContent = dashArr.join('');
 guessArr.push(guess[turnOfHang - 1])
 console.log(guessArr)
  } 
-else if(letter != guess[turnOfHang]){
+if(letter != guess[turnOfHang]){
     //When guessing wrong we decrease tries by 1 
+    if(tries>0 && guessArr.join('') != guess.join('') ){
     tries -= 1;
     console.log(tries)
-    document.querySelector('.guesses').textContent = 'tries:' + Tries
-    } 
-
- if(guessArr.join('') === guess.join('')){
-
-// joins both arrays and see if they are the same(you win if so)
-document.querySelector('.congrats').textContent += 'You win';
+    document.querySelector('.guesses').textContent = 'tries:' + tries
+    }
 } 
 
-else if(tries == 0){
+ if(guessArr.join('') === guess.join('')){
+// joins both arrays and see if they are the same(you win if so)
+document.querySelector('.congrats').textContent = 'You win';
+} 
+
+else if(tries == 0 ){
 // if we go to zero we lose tries
-    document.querySelector('.congrats').textContent += 'lose'
+
+    document.querySelector('.congrats').textContent = 'lose'
 }
 
 
