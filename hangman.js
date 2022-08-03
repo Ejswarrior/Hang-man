@@ -48,7 +48,9 @@ if(letter != guess[turnOfHang]){
     tries -= 1;
     console.log(tries)
     document.querySelector('.guesses').textContent = 'tries:' + tries
+
     }
+
 } 
 
  if(guessArr.join('') === guess.join('')){
